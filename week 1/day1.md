@@ -103,9 +103,48 @@
 - **Directed Acyclical Graphs(DAG):** graph where there are no cycles and is directed
 - cycles cause issues for algorithsm such as shortest path
 
-# Edge List
-- 
+# Edge List video
+- Can store graph in two lists, one for Vertices, one for edges
+- Can use a dynamic list
+- vertex is identified by its name
+- Can store vertex and edges as strings of the name of the vertex
+- graph edges can have weight as well, can be stored in the edge object as another attribute/property
+  - very slow, slow lookup,
 
+## time complexity, space complexity
+- vertex list by name, can assumes names will be reasonable, space will be basically )(|v|), number of nodes
+- for edge list, could just pointers/references to the vertex, would be much more efficient, better to have index of the vertex
+  - this way space complexity would be O(|E|), instead of taking up 2|v||e|, where each edge would also store two vertices
+- time cost here is pretty high
+
+- to find all adjacent nodes, it would be O(|E|), slow, want it to be O(1), constant
+- to chedk if given nodes are connected, also O(|E|), have to check all edges
+- O(|E|) is much worse than O(|V|) since edges can be the square of |V| 
+
+
+- have array VxV, where we have the a matrix with each element as a row, and as a column, and 1 representing a edge between the two, and 0 representing no edge
+
+### Adjacency Matrix
+![adjacency matrix](adjacency_matrix.jpg)
+- Adjacency matrix takes up V^2 space, which is very memory intensive for something that is sparse, but very good for something that is dense. 
+- for sparse maps., it is better to use an adjacency list instead of a matrix.
+- basically impossible for all users in a social network to be friends with every other member, so if FB used an adjacency matrix, would be very intensive on memory.
+- if you assume that web pages are nodes, and links are directed edges, web pages would have link to only a few other pages, so graph would be sparse, bad fit for matrix.
+
+### Adjacency List
+---
+- Can use a list, either linked list, or a binary search tree, which we can keep it balance
+  - by keeping it balanced we can insert, search, and deleting in O(logN)
+- many ways to store connections in a node
+- instead of storing all the connections in a matrix, can just store the connection
+- can create an array of pointers, 
+- can keep each row as a pointer to an array 
+- can create an array of pointers of size 8, where each pointer points to an array of differing sizes.
+  - based on how many connections we have
+  - Space complexity would be O(E)
+  - time complexity of search would be O(V) at worst, but can apply a binary search for O(logV)
+  - need to keep rows sorted tho, but can amortize the payment, making it at worse O(V) again.
+- 
 ### Questions
 1. How do we define graphs, where are they commonly used?
 
@@ -114,7 +153,13 @@
 3. What are some ways we might store a graph in memory? What space/time complexity problems might we face?
 
 
+
+# REST
+
+
+
 # flashcards
+---
  ### How do we define a graph mathematically?
  - a way to formally represent a network, which is a collection of objects that are interconnected.
  - G = (V, E), where V = vertices/nodes, and E = Edges, links
@@ -151,13 +196,16 @@
 
 
  ### Describe the levels of connectivity a graph can have (strongly connected, weakly connected).
- - 
+ - Connected graphs are undirected graphs that have connections from each element to another 
 
 
  ### What are cycles?
+ - cycles are paths in a graph that repeat a node, meaning that you can go from a node back to itself.
+ - there are simple cycles, closed cycles, etc.
 
 
  ### What are some naive ways we can store and traverse graphs? Be able to discuss time/space complexity of these approaches, and what issues we may face.
+- we can store graphs in arrays, with edges in a array as well, where each element would represent an edge in either an object(undirected), or 
 
 
  ### What are the three primary Fielding constraints? (Bonus if you can say who Fielding is!)
