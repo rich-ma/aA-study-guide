@@ -316,14 +316,15 @@ Content-Type: text/html
     1. Client Server relationship, where clients send HTTP requests to servers on a one time basis, no ongoing or eavesdropping, broadcasting relationship
     2. Stateless, server/clients do not keep track of each others state, when not interacting, they have no idea of each others existence
     3. Uniform interface, systems must keep consistent methods of communication between client and server, common language
-      - Idenfication of Resources, consistent naming and using stable identifiers that do not change so that requets to the same URI get the same response regardless of time
-      - manipulation of resources through representation, the client is able to modify the resource through sending representations to the server via JSON or something similar, including information that they would like to add, delete, modify.
-        - User sends PUT, PATCH, DELETE, requests and server decides what to do, this modifies the actualy response and html
-      - self descriptive messages, messages include all relevant information and come in a single response/request.
-      - hypermedia, serversshould only send hypermedia to clients, meaning, 
+
 
 
  ### What sub-constraints make up a Uniform Interface
+  - Idenfication of Resources, consistent naming and using stable identifiers that do not change so that requets to the same URI get the same response regardless of time
+  - manipulation of resources through representation, the client is able to modify the resource through sending representations to the server via JSON or something similar, including information that they would like to add, delete, modify.
+    - User sends PUT, PATCH, DELETE, requests and server decides what to do, this modifies the actualy response and html
+  - self descriptive messages, messages include all relevant information and come in a single response/request.
+  - hypermedia, serversshould only send hypermedia to clients, meaning 
 
 
  ### Walk through an arbitrary example of a RESTful request/response cycle, and describe what makes it RESTful
