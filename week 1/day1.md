@@ -261,12 +261,31 @@ Content-Type: text/html
 - 
 
 # Prototype
-F.prototype
-In modern JavaScript we can set a prototype using __proto__, as described in the previous article. But it wasn’t like that all the time.
+- Prototypes are a fundamental feature of Javascript. Given this topic's importance to the language, they are a very hot interview/phone screen topic. Having a strong grasp on Javascript Prototypes will give you a major leg-up in the application process.
+- We can use __proto__ to determine an objects prototype now, but didn't used to be able to
+- JS has prototypal inheritance from the beginning, core feature of JS.
+- but before we had to use the "prototype" property of the constructor function.
+  
+## The prototype property
+- new F(), creates a new object, the objects prototype is set to F.prototype;
+- if F has a prototype property with value of the object type, new operator sets it to [[Prototype]] for the new object.
+- F.prototype means a reguar property names prototype on F.
 
-JavaScript has had prototypal inheritance from the beginning. It was one of the core features of the language.
+```javascript
+let animal = {
+  eats: true
+};
 
-But in the old times, there was another (and the only) way to set it: to use a "prototype" property of the constructor function. And there are still many scripts that use it.
+function Rabbit(name) {
+  this.name = name;
+}
+
+Rabbit.prototype = animal;
+
+let rabbit = new Rabbit("White Rabbit"); //  rabbit.__proto__ == animal
+
+alert( rabbit.eats ); // true
+```
 
 
 # flashcards
