@@ -260,6 +260,15 @@ Content-Type: text/html
 - most important aspect of RESTful systems, allows client to intelligently adapt to changes
 - 
 
+# Prototype
+F.prototype
+In modern JavaScript we can set a prototype using __proto__, as described in the previous article. But it wasn’t like that all the time.
+
+JavaScript has had prototypal inheritance from the beginning. It was one of the core features of the language.
+
+But in the old times, there was another (and the only) way to set it: to use a "prototype" property of the constructor function. And there are still many scripts that use it.
+
+
 # flashcards
 ---
  ### How do we define a graph mathematically?
@@ -328,6 +337,8 @@ Content-Type: text/html
 
 
  ### Walk through an arbitrary example of a RESTful request/response cycle, and describe what makes it RESTful
+
+
 
 
  ### Give a high level overview of what an object's prototype represents
