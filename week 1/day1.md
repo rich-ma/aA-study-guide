@@ -395,10 +395,20 @@ vs.
 - Can develop games using <canvas>. HTML provides mobile friendly way to develop fun interactive games
 
 ## 3. Legacy/Cross Browser Support
+- HTML5 was developed so that all browsers can use it.
+- even if a browser doens't like it, we can add a JS script that will convert it back.
+- 
 
 ## 2. Mobile, Mobile, Mobile
+- HTMl5 replaced mobile flash, is very mobile friendly
+- mobile browsers fully adopted html5, and allow for easy responsive, mobile first design.
+- great meta tags for mobile:
+  - Viewports: allow you to define viewport widht and zoom setting
+  - Full screen browsing: ios specific values that allow apple devices to display in full screen mode
+  - home screen icons: like favicon on desktop, icons are used to add favirotes to the home screen of an ios and android device
 
 ## 1. Its the future(now?)
+- use it
 
 
 # flashcards
