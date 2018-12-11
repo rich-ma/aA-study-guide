@@ -345,6 +345,61 @@ Rabbit.prototype = {
 - Can Easily decalre doctype now, don't need long lines of head tags with doctype attributes
 
 
+## 7. Cleaner Code
+- allows you to write cleaner, more descriptive, semantic code to seperate meaning fro style and content
+- no more divs on divs on divs, and classitis, HTML headers and semantic tags fix this issue.
+```html
+<div id="header">
+ <h1>Header Text</h1>
+ <div id="nav">
+  <ul>
+   <li><a href="#">Link</a></li>
+   <li><a href="#">Link</a></li>
+   <li><a href="#">Link</a></li>
+  </ul>
+ </div>
+</div>
+```
+vs. 
+```html
+<header>
+ <h1>Header Text</h1>
+ <nav>
+  <ul>
+   <li><a href="#">Link</a></li>
+   <li><a href="#">Link</a></li>
+   <li><a href="#">Link</a></li>
+  </ul>
+ </nav>
+</header>
+```
+
+## 6. Smarter Storage
+- Local storage allows a mix of old cookies and client side database. 
+- allows for storage across multiple windows, has better security, and data persists after a browser is closed
+- is essentially client side db, dont have to worry about user deleting cookings and is adopted by all popular browsers
+- local storage allows for web apps that don't require third party plugins.
+- allows you to store user info, cache data, and load previous stat.
+
+## 5. Better Interactions
+- allows for better interactions and dynamic websites.
+- users can interact with a <canvas> that allows them to interact with, and for you to animate
+- html5 also comes with new APIs that allow you to build better UX such as
+  - drag and drop
+  - offline storage db
+  - browser history management
+  - document editing
+  - timed media playback
+
+## 4. Game Development
+- Can develop games using <canvas>. HTML provides mobile friendly way to develop fun interactive games
+
+## 3. Legacy/Cross Browser Support
+
+## 2. Mobile, Mobile, Mobile
+
+## 1. Its the future(now?)
+
 
 # flashcards
 ---
