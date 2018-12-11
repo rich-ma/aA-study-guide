@@ -286,6 +286,30 @@ let rabbit = new Rabbit("White Rabbit"); //  rabbit.__proto__ == animal
 
 alert( rabbit.eats ); // true
 ```
+- in this code, we create this animal object, and set the prototype of the constructor Rabbit to animal, meaning anything created using this constructor will have this prototype of animal.
+
+## Default F.prototype contructor property
+- Every function has a prototype by default, the default prototype is an object with the property 'constructor' that points back to the function.
+- function Rabbit(){}
+- Rabbit.prototype.constructor = Rabbit();
+- We can use the constructor property of an object to create a new object of that type.
+  - useful for when we have an object and dont know exactly what constructor was used to create it.
+- Javascript does not esnure the right "constructor" value
+  - if you replace the default prototype, the constructor will be gone all together
+  - in order to fix this, we can modify the actualy prototype, instead of rewriting it.
+  - Rabbit.prototype.jumps = true
+  - or we can replace the prototype and recreate the constructor correctly
+```javascript
+Rabbit.prototype = {
+  jumps: true,
+  constructor: Rabbit
+};
+```
+
+## Summary
+- F.prototype is not the same as [[Prototype]], it sets the [[Prototype]] of a new ojbect when new F() is called.
+- F.prototype should either be an object or null
+- prototype property only has this special effect when it is set to a constructor and invoked using 'new'
 
 
 # flashcards
@@ -361,19 +385,24 @@ alert( rabbit.eats ); // true
 
 
  ### Give a high level overview of what an object's prototype represents
- 
+ - an objects prototype represents the inheritance(methods, properties) that the objects receives from its parent class
+ - the __proto__ of an object is inherited from the prototype property of the constructor it was created from.
  
  ### What are the differences between the __proto__ and prototype attributes?
- 
+ - F.prototype is just a regular property named prototype, while __proto__ is actually the [[Prototype]]
+ - if we set the prototype of a constructor to an object, it will automatically set the [[Prototype]] of any object created from it to that object.
+ - Prototype is the inheritance of an object, while prototype is just a regular named property called prototype
+ - 
  
  ### What happens when we do or don't explicity set an object's prototype?
- 
+ - if we don't set an objects protottype it will get a default prototype 
  
  ### What is an object's default prototype?
+ - an objects default prototype is an object with the constructor function that created it.
  
  
  ### What are the valid values for an object's prototype?
- 
+ - either an object, or null
  
  ### Name 5 benefits of HTML5
  
