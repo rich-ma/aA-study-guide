@@ -315,7 +315,34 @@ Rabbit.prototype = {
 
 # HTML 5
 ## 10. Accessibility
-- 
+- Using Semantics and ARIA, create accessible sites is easier now
+- new HTML semantic tags
+  - <article>
+  - <aside>
+  - <details>
+  - <figcaption>
+  - <figure>
+  - <footer>
+  - <header>
+  - <main>
+  - <mark>
+  - <nav>
+  - <section>
+  - <summary>
+  - <time>
+- these allow for users to easily access concent, before was hard to determine what a specific div was, now its easier to examine HTML doc for those who use them
+- ARIA is a W3C(World Wide Web Consortium) spec that is used to assign specific 'roles' to elements in an html doc
+  - creating important landmarks on the page, header, footer, nav, article, using role attributes
+  - HTML5 validates these attributes, and will have built in roles that can't be overwritten.
+
+## 9. Video and Audio support
+- Support for HTML5 <video> and <audio> tags, don't need to use flash player anymore.
+- used to have to use <embed> and <object> tags to assign parameters to get videos to work properly
+- now we can use inline styling to get video sizing<video src=”url” width=”640px” height=”380px” autoplay/>
+- nowadays everyone is using HTML5, so don't need to embed, but might have to check every browser for its 
+
+## 8. Doctype
+- Can Easily decalre doctype now, don't need long lines of head tags with doctype attributes
 
 
 
