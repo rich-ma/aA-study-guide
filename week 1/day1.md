@@ -312,6 +312,13 @@ Rabbit.prototype = {
 - prototype property only has this special effect when it is set to a constructor and invoked using 'new'
 
 
+
+# HTML 5
+## 10. Accessibility
+- 
+
+
+
 # flashcards
 ---
  ### How do we define a graph mathematically?
