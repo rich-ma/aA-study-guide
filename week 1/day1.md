@@ -504,6 +504,13 @@ vs.
  - either an object, or null
  
  ### Name 5 benefits of HTML5
+ - mobile friendly
+ - semantic tags
+ - more interactive(APIs like drag n drop), canvas etc.
+ - better local storage/cookies
+ - cleaner code
+ - game development with canvas
+ - better video and audio support with <video> and <audio> tags
  
  
  ### What is localStorage? How might you use it?
