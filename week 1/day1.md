@@ -662,6 +662,10 @@ vs.
  
  
  ### Why are media queries useful?
- 
+ - allow for responsive sites
+ - allow for mobile first design
  
  ### What is mobile-first design? Be as specific as possible.
+ - designing pages for mobile use first, meaning starting for smaller format
+ - this allows for faster web load on mobile since they need the resources more
+ - 
