@@ -128,6 +128,10 @@ elementary.getStaff()          // ["Seymour Skinner", "Edna Krabappel", "Otto Ma
 ```
 - in this example, when elementary is created, the outer function is already returned, and staff only existed inside the closure
 - gives you access to get staff still, and addStaff, but staff itself is protected.
+
+
+Ex questions
+
 # Flashcards
 ---
 
