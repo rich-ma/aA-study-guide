@@ -131,7 +131,18 @@ elementary.getStaff()          // ["Seymour Skinner", "Edna Krabappel", "Otto Ma
 
 
 Ex questions
-
+what is wrong with this code?
+```javascript
+const arr = [10, 12, 15, 21];
+for (var i = 0; i < arr.length; i++) {
+  setTimeout(function() {
+    console.log(`The value ${arr[i]} is at index: ${i}`);
+  }, (i+1) * 1000);
+}
+```
+- since there is a set timeout, the timeout function will not run until everythign else is done
+- this means that i=4 at this point, and we will get an error that arr[4] does not exist
+- we can fix this by 
 # Flashcards
 ---
 
