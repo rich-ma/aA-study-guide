@@ -82,6 +82,52 @@ can create an array of pointers
       -  binary serach tree much better
       -  
 
+# Javascript Closures
+- a combination of a function and the lexical enviroment where it was declared
+- allow a function to wrap over the variables from the enclosing scope-environment-
+- it even has access to the variables after leaving the scope where it was declared
+```javascript
+
+function sayHi(name){
+  var message = `Hi ${name}!`;
+  function greeting() {
+    console.log(message)
+  }
+  return greeting
+}
+var sayHiToJon = sayHi('Jon');
+console.log(sayHiToJon)     // ƒ() { console.log(message) }
+console.log(sayHiToJon())   // 'Hi Jon!'
+```
+- in this code, the greeting function has access to the message outside of its scope, due to closing over it
+- will correctly log the argument passed to the function
+- The above example covers the two things you need to know about closures:
+- Refers to variables in outer scope.
+- The returned function access themessage variable from the enclosing scope.
+- It can refer to outer scope variables even after the outer function has returned. 
+- SayHiToJon is a reference to the greeting function, created when sayHi was run. The greeting function maintains a reference to its outer scope — environment — in which message exists.
+
+
+- Closures allow for Data Encapsulation, meaning that it protects data that should not be exposed
+```javascript
+function SpringfieldSchool() {
+  let staff = ['Seymour Skinner', 'Edna Krabappel'];
+  return {
+    getStaff: function() { console.log(staff) },
+    addStaff: function(name) { staff.push(name) }
+  }
+}
+
+let elementary = SpringfieldSchool()
+console.log(elementary)        // { getStaff: ƒ, addStaff: ƒ }
+console.log(staff)             // ReferenceError: staff is not defined
+/* Closure allows access to the staff variable */
+elementary.getStaff()          // ["Seymour Skinner", "Edna Krabappel"]
+elementary.addStaff('Otto Mann')
+elementary.getStaff()          // ["Seymour Skinner", "Edna Krabappel", "Otto Mann"]
+```
+- in this example, when elementary is created, the outer function is already returned, and staff only existed inside the closure
+- gives you access to get staff still, and addStaff, but staff itself is protected.
 # Flashcards
 ---
 
