@@ -86,22 +86,34 @@ can create an array of pointers
 ---
 
 ## Give a high level overview of an Adjacency Matrix
+- an adjacency matrix is a possible represntation of a graph
+- it utilizes a 2d array(matrix) where the rows and columns represent the indexed positions of each node in the array
+-  corresponding value at Arr[col][row] represents the existence of an edge between those two
+-  For an undirected graph, half the positions(V^2 - v) are wasted since it is mirrored over the diagonal
+-  dor a directed graph, there is no reducndancy
+-  can also represent a weighted graph with values instead of 0/1
 
 
 ## If we were only concerned about time complexity, is an Adjacency Matrix efficient? Why/why not?
 - yes, we can look up an edge in O(1) time
 - very fast compared to other models
 - if we don't have the index of each node, we will have to search through the nodes and it will be O(V)
-- Can create 
-
+- Can create a hash object to store the index of each node, that way we dont need to search through the array each time.
+- O(1) lookup, deletion, insertion
 
 ## If we were only concerned about space complexity, is an Adjacency Matrix efficient? Why/why not?
-- It is poor in space complexity, will take up O(V^2) 
+- It is poor in space complexity, will take up O(V^2), which obviously grows exponentially, with 10^9 users, takes up 10^18 space, which is 1000PB, giant
+- can be very pricey depending on the size of the graph
+- 
 
 ## Give a high level overview of an Adjacency List
+- an adjacency list represents only the edges in a graph, but linked to the specific node vs storing all of them in an array or another object
+- 
 
 
 ## What benefits do we get from an Adjacency List?
+- saves alot of time on space 
+- takes longer to lookup things, but finding all adjacent nodes would be much faster than a matrix would
 
 
 ## What are the benefits of a Javascript closure?
