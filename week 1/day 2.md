@@ -155,7 +155,20 @@ for (var i = 0; i < arr.length; i++) {
 }
 ```
 - in this code, we write a for loop, looping over the array, and creating an anonymous function that we call immediately(IFFY immediately-invoked function expression)
+- we create this variable 'j' in each fucntion call, which stores the value 'i' from the outer function, meaning that it will hold onto the value through the event loop.
 
+- can also fix this by using a let instead of a var in the for loop
+```javascript
+for (let i = 0; i < arr.length; i++) {
+  setTimeout(function() {
+    console.log(`The value ${arr[i]} is at index: ${i}`);
+  }, (i) * 1000);
+}
+```
+- this works because of the **scope** difference between let and var.
+  - the value of i in the var is locked to the outer scope(nearest function block) in which the function was called( i = 4)
+  - while the value of i in the let example, the value of i is scoped to the nearest enclosing block, meaning it maintains the value of i by declaring it within the enclosing scope.
+  - 
 
 
 # Javascript callstack, concurrency, event loop
@@ -244,12 +257,29 @@ callback:
 
 
 ## What are the benefits of a Javascript closure?
+- allows you to access variables defined outside the scope of the closure
+- can refer to outer scope variables, even after outer function has returned
+- allows for data encapsulation
+  - protects data that should not be exposed
+  - 
 
 
 ## Formally define a Javascript closure
-
+- combination of a function and the lexical environment from which it was delcared
 
 ## Give an example of a closure
+```javascript
+let a = 10;
+function test(){
+  let b = 5;
+  console.log(a + b);
+}
+
+test();
+```
+- in this example, the value of b is protected, and has access to the variable a outside of it.
 
 
 ## What is data encapsulation?
+- protection of data within a scope that only exists within that scope.
+- protects variables from exposure to outer scopes
