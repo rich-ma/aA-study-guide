@@ -142,7 +142,28 @@ for (var i = 0; i < arr.length; i++) {
 ```
 - since there is a set timeout, the timeout function will not run until everythign else is done
 - this means that i=4 at this point, and we will get an error that arr[4] does not exist
-- we can fix this by 
+- we can fix this by using IIFE(Immediately-invoked function expression) pronounced Iffy
+  - coding pattern that allows functions to be called immediately, instead of waiting on the regular javascript 
+
+
+# Javascript callstack, concurrency, event loop
+- javascript is a single threaded non-blocking asynchronous, concurrent langauge
+- has calls tack, event loop, callback queue, and other apis
+- JS call stack functions like a regular call stack, LIFO(last in, first out)
+![callstack](callstack.jpg)
+
+- blocking
+  - code that is slow, console.log is fast, network requests slow, etc
+  - blocking is an issue becuase it locks you out from being able to do anything on the web.
+    - big issue, which is why we are given concurrency and event loop
+
+- Asychronous requests
+  - code gets stuck, can't do other things until others are done
+  - simplest solution is asychronous callbacks
+    - run the code later after everything else is done
+    - 
+
+
 # Flashcards
 ---
 
