@@ -220,7 +220,9 @@ callback:
 - by using asynch we can give the browser a chance to repaint between event loop.
 
 - can also flood the callback queue, only do slow work every few seconds, or until user stops scrolling, not during all user inputs.
-- 
+
+
+# CSS Grid
 
 # Flashcards
 ---
