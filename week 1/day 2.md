@@ -313,6 +313,25 @@ callback:
 ```
 ![custom_grid](custom_grid.jpg)
 
+can use span to determine how many spaces to take up as well
+- can combine grid-column and grid-row
+- can use grid-area for more efficiency
+  - grid-area: grid-row-start, grid-column-start, grid-row-end, grid-column-end.
+    - ex: grid-area: 1/1/3/6;
+- using 'order' allows us to determine the 'order' in which grids are placed.
+- when creating the grid, can use grid-template-columns/rows and repeat(number, size/%) to repeat the code without having to type it all out. 
+  - grid-template-columns: 20% 20% 20% 20% 20%;
+  - grid-template-columns: repeat(5, 20%);
+  - can use pixels, %, ems, and able to mix them
+  - can use fractions as well, 1fr, 3fr will create 4 columns of equal size;
+  - by using fr, you can take up remaining space as well, for example
+    - 50px 1fr 2fr 50px, will split the space between the 50px into thirds.(1/3, 2/3 respectively)
+
+- just like grid-area can be used to shorthand what position a box is in for both row and columns, grid-template does the same for the template
+  - 
+![grid-template](grid-template.jpg)
+![grid-template](grid-template2.jpg)
+
 
 # Flashcards
 ---
