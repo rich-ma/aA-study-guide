@@ -345,3 +345,113 @@ vs.
   }
 }
 ```
+
+# CSS Grid
+- fundmental to website design
+- native support from major browsers
+- Core ingredients are:
+  - Wrapper(parent)
+  - items(children)
+- The wrapper is the actual grid, and the child elements are the content inside the grid.
+```html
+<div class="wrapper">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>
+</div>
+```
+- all we need to do is all display: grid; to the .wrapper class in css.
+- then we need to define how we want to grid to look by adding columns and rows.
+  - using 'grid-template-columns', and 'grid-template'rows'
+  - the number of arguments you put into each one will dictate not only the number of those elements, but the respective widths as well.
+
+```css
+.wrapper {
+    display: grid;
+} 
+```
+![without_grid](no_grid.jpg)
+- grid before setting the grid-template-columns/rows
+- will just be regular block looking setup
+
+```css
+.wrapper {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 50px 50px;
+}
+```
+![grid](grid.jpg)
+- from our css above, we get 3 columns of 100px each, and two rows of 50px height.
+
+```css
+.wrapper {
+    display: grid;
+    grid-template-columns: 200px 50px 100px;
+    grid-template-rows: 100px 30px;
+}
+```
+- this would create a grid where the first col is 250px, second 50px, and third 100px
+- the first row would have a height of 100px, and second 30px, sign smaller.
+![grid2](grid2.jpg)
+
+## placing items
+- if you create a grid that is larger than the number of elements, it will only fill the elements that you have.
+- grids are indexed starting at 1, so regular counting
+- if you want to resize/place an item, you can dictate its starting and ending position by using css
+```css
+.item1 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+```
+- this tells the first item to start at the first position, and end on the 4th, 
+- sounds like it would go down to the first col in the second row, but how CSS grid names its columns is a bit weird
+![grid columns](grid_col.jpg)
+- grid lines start at the beginning, and flank left and right of each column, meaning there are always column + 1 grid lines.
+  - if we had 5 columns, and wanted an item to take up the middle 3, we would start at 2 and end at 5.
+- instead of writing 'grid-column-start' and 'grid-column-end', we can use:
+```css
+.item1 {
+    grid-column: 1 / 4;
+}
+```
+- can even use 'grid-row-start' and 'grid-row-end' if we want to change its vertical representation on the grid.
+- can you combine both?
+```css
+.item1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.item3 {
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+.item4 {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+```
+![custom_grid](custom_grid.jpg)
+
+can use span to determine how many spaces to take up as well
+- can combine grid-column and grid-row
+- can use grid-area for more efficiency
+  - grid-area: grid-row-start, grid-column-start, grid-row-end, grid-column-end.
+    - ex: grid-area: 1/1/3/6;
+- using 'order' allows us to determine the 'order' in which grids are placed.
+- when creating the grid, can use grid-template-columns/rows and repeat(number, size/%) to repeat the code without having to type it all out. 
+  - grid-template-columns: 20% 20% 20% 20% 20%;
+  - grid-template-columns: repeat(5, 20%);
+  - can use pixels, %, ems, and able to mix them
+  - can use fractions as well, 1fr, 3fr will create 4 columns of equal size;
+  - by using fr, you can take up remaining space as well, for example
+    - 50px 1fr 2fr 50px, will split the space between the 50px into thirds.(1/3, 2/3 respectively)
+
+- just like grid-area can be used to shorthand what position a box is in for both row and columns, grid-template does the same for the template
+  - 
+![grid-template](grid-template.jpg)
+![grid-template](grid-template2.jpg)
