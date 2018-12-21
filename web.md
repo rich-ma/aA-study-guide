@@ -104,4 +104,244 @@ Content-Type: text/html
 
 - a system has a **uniform interface** if it has an identifier for each resource, manipulates then through sending representations from the client to server, has self-descriptive messages and composed of hypermedia.
 - most important aspect of RESTful systems, allows client to intelligently adapt to changes
+
+
+# HTML 5
+## 10. Accessibility
+- Using Semantics and ARIA, create accessible sites is easier now
+- new HTML semantic tags
+  - <article>
+  - <aside>
+  - <details>
+  - <figcaption>
+  - <figure>
+  - <footer>
+  - <header>
+  - <main>
+  - <mark>
+  - <nav>
+  - <section>
+  - <summary>
+  - <time>
+- these allow for users to easily access concent, before was hard to determine what a specific div was, now its easier to examine HTML doc for those who use them
+- ARIA is a W3C(World Wide Web Consortium) spec that is used to assign specific 'roles' to elements in an html doc
+  - creating important landmarks on the page, header, footer, nav, article, using role attributes
+  - HTML5 validates these attributes, and will have built in roles that can't be overwritten.
+
+## 9. Video and Audio support
+- Support for HTML5 <video> and <audio> tags, don't need to use flash player anymore.
+- used to have to use <embed> and <object> tags to assign parameters to get videos to work properly
+- now we can use inline styling to get video sizing<video src=”url” width=”640px” height=”380px” autoplay/>
+- nowadays everyone is using HTML5, so don't need to embed, but might have to check every browser for its 
+
+## 8. Doctype
+- Can Easily decalre doctype now, don't need long lines of head tags with doctype attributes
+
+
+## 7. Cleaner Code
+- allows you to write cleaner, more descriptive, semantic code to seperate meaning fro style and content
+- no more divs on divs on divs, and classitis, HTML headers and semantic tags fix this issue.
+```html
+<div id="header">
+ <h1>Header Text</h1>
+ <div id="nav">
+  <ul>
+   <li><a href="#">Link</a></li>
+   <li><a href="#">Link</a></li>
+   <li><a href="#">Link</a></li>
+  </ul>
+ </div>
+</div>
+```
+vs. 
+```html
+<header>
+ <h1>Header Text</h1>
+ <nav>
+  <ul>
+   <li><a href="#">Link</a></li>
+   <li><a href="#">Link</a></li>
+   <li><a href="#">Link</a></li>
+  </ul>
+ </nav>
+</header>
+```
+
+## 6. Smarter Storage
+- Local storage allows a mix of old cookies and client side database. 
+- allows for storage across multiple windows, has better security, and data persists after a browser is closed
+- is essentially client side db, dont have to worry about user deleting cookings and is adopted by all popular browsers
+- local storage allows for web apps that don't require third party plugins.
+- allows you to store user info, cache data, and load previous stat.
+
+## 5. Better Interactions
+- allows for better interactions and dynamic websites.
+- users can interact with a <canvas> that allows them to interact with, and for you to animate
+- html5 also comes with new APIs that allow you to build better UX such as
+  - drag and drop
+  - offline storage db
+  - browser history management
+  - document editing
+  - timed media playback
+
+## 4. Game Development
+- Can develop games using <canvas>. HTML provides mobile friendly way to develop fun interactive games
+
+## 3. Legacy/Cross Browser Support
+- HTML5 was developed so that all browsers can use it.
+- even if a browser doens't like it, we can add a JS script that will convert it back.
 - 
+
+## 2. Mobile, Mobile, Mobile
+- HTMl5 replaced mobile flash, is very mobile friendly
+- mobile browsers fully adopted html5, and allow for easy responsive, mobile first design.
+- great meta tags for mobile:
+  - Viewports: allow you to define viewport widht and zoom setting
+  - Full screen browsing: ios specific values that allow apple devices to display in full screen mode
+  - home screen icons: like favicon on desktop, icons are used to add favirotes to the home screen of an ios and android device
+
+## 1. Its the future(now?)
+- use it
+
+# Responsive web design - Media Queries
+- Media Queries are something new to CSS3, it uses the @media rule to include css rules only if certain conditions are true
+```css
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}
+```
+- this code will only exist if the max-width of the screen is 600px or smaller
+- we can apply this to add breakpoints to rows and columns to look better on a smaller format, and be responsive if a user resizes
+```css
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
+```
+
+- in this code, the columns will reorganize to one col if the size is too small.
+- super common in modern websites
+
+## Always design mobile first
+- mobile first means designing for smaller format before desktop or other devices
+- this allows for the site to load faster on mobile devices
+- instead of putting the media query looking for a min size, you start with the columns and expand if the width is wider.
+```css
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+```
+
+## multiple breakpoints(media queries)
+- you can add multiple breakpoints to be even more responsive, one for under 800px, and one for under 600px
+- this will allow the page to change depending on different devices or user interaction
+```css
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+```
+- in this code, there are two classes .col-# and .col-s-#, s probably meaning small
+- can change the sizes to target certain devices:
+  - phone, tablet, phone landscape, tablet landscape, laptop, wide screen
+```css
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {...} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {...} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {...} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {...} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {...}
+```
+- media queries can also be used to change based on orientation of the browser
+```css
+@media only screen and (orientation: landscape) {
+  body {
+    background-color: lightblue;
+  }
+}
+```
+
+- can use media queries to hide objects as well
+```css
+/* If the screen size is 600px wide or less, hide the element */
+@media only screen and (max-width: 600px) {
+  div.example {
+    display: none;
+  }
+}
+```
