@@ -92,3 +92,18 @@ int main()
     return 0; 
 } 
 ```
+
+
+
+
+# Web
+---
+## What happens when you type in www.google.com?
+1. Browser checks cache for a DNS record to find corresponding IP address of google.com
+2. If the request URL is not in the cache, ISP's DNS server initiates a DNS request to find the IP address of the server that hosts google.com
+3. browser initiates a TCP connection with the server
+4. the browser sends an http request to the web server
+5. server handles the request and sends back a response
+6. server sounds out an HTTP response
+7. browser displays the HTML content(for html responses which is the most common)
+8. 
