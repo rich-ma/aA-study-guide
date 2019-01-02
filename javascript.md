@@ -2,7 +2,113 @@
 ---
 
 # Try, catch, finally, Error Handling
-- try is the first step in 
+- try is the first step in error handling, used as first step in code that is likely to fail
+- usually followed by:
+  - try-catch
+  - try-finally
+  - try-catch-finally
+- **catch** directly follows the try block, and is executed only if a exception is thrown
+  - contains statements on what to do if an exception is thrown
+  - if no exception is caught in the try block, the catch will be **skipped**
+  - if any statement within the try block(including external function calls) throw an exception, the catch clause will take control.
+- **finally** block goes fater the try-catch block, and **always** executes regardless of any exceptions
+
+Example:
+```javascript
+function getElement(arr, pos) {
+    return arr[pos];
+}
+
+
+//let arr = [1, 2, 3, 4, 5];
+
+try {
+    console.log(getElement(arr, 4));
+} 
+catch (e) {
+    console.log(e.message);
+}
+console.log("The program continued executing!");
+```
+- in this code, the catch block will execute because **arr** does not exist, and will print the error message.
+
+```javascript
+//let arr = [1, 2, 3, 4, 5];
+
+try {
+    console.log(getElement(arr, 4));
+} 
+finally {
+    console.log("Finally Block");
+}
+console.log("The program continued executing!");
+```
+- in this code, the console will not log "The program continued executing!" because there was never a catch, and the code terminated after the finally block(Which always runs regardless of exceptions or not)
+
+```javascript
+"use strict";
+
+const arr = [1, 4, 3, 4, 5];
+
+try {
+    arr = [4, 2];
+    console.log(arr.sort());
+} 
+catch (e) {
+    console.log(e.message);
+} 
+finally {
+    console.log(arr.sort());
+}
+```
+- in this code, we can't reassign the const arr, so they catch will log, but the finally will still log arr.sort();
+
+## throw
+- we use throw to an exception, can use a custom error, or throw some value
+- in the example below, functions containing throw statements are called from within the try blocks and is caught with the catch block
+```javascript
+function throwString() {
+    // Generate an exception with a String value
+    throw "some exception";
+}
+
+function throwFalse() {
+    // Generate an exception with a boolean value of false
+    throw false;
+}
+
+function throwNumber() {
+    // Generate an exception with a Number value of -1
+    throw -1;
+}
+
+try {
+    throwString();
+}
+catch (e) {
+    console.log(e);
+}
+
+try {
+    throwFalse();
+}
+catch (e) {
+    console.log(e);
+}
+
+try {
+    throwNumber();
+}
+catch (e) {
+    console.log(e);
+}
+```
+- output: 'some exception', false, -1
+
+### custom errors
+- throw new Error(input);
+- this allows us to customize the error message that is thrown to the catch block, allowing us to customize the response that the user encounters
+- 
 
 
 # Franziska Hinkelmann: JavaScript engines - how do they even? | JSConf EU 2017
