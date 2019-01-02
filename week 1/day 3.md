@@ -1,5 +1,35 @@
 # day 3 notes, DFS
 
+# Algorithms
+---
+## BFS Graph/DFS Graph explanation
+
+### DFS
+- requires a stack
+- Starting at the first node, or however you determine where to start, you add that node on the stack, and mark it is visited.
+- then you look at its adjacent nodes and visit the lowest/first alphabetically/however you determine to traverse.  
+  - you mark that one as visited, then continue this step for this current node
+- you continue to visit the lowest node of each node until there are no nodes left to go
+- then you go back through the stack, popping them off the stack if there are no new nodes left to visit, and there are no nodes left on the stack, then you are done.
+![DFS](DFS.jpg)
+- in this example we would go from A-B-E-G
+  - then since G has nowhere to go, we would go back to E, which has nowhere, back to B
+  - from B we would go to F
+  - from F we go to C, then to H, then back to C, F, and then to D
+  - from there we should have visited every node and have finished the traversal
+  - our result visit owuld have been:
+    - A B E G F C H D
+
+## BFS
+- Breadth first search utilizes a queue rather than a stack, meaning it is FIFO, rather last LIFO
+- guess is that we will visit:
+  - A B D G E F C H
+- will start at A, but this time, we stay working on A, instead of moving to the next one
+- we will visit them in order by alphabetical order/lowest just like in DFS, except we dont move our current node to the next one, but we do visit them
+- when we run out of other vertices/nodes to visit, we will dequeue the first one and make it our current vertex/node
+![BFS](BFS.jpg)
+- 
+
 ## DFS Search of graphs
 - DFS similar to DF traveersal of a tree, except graphs could have cycles
 ![DFS](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/cycle.png)
