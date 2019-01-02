@@ -1,6 +1,9 @@
 # Javascript notes
 ---
 
+# Try, catch, finally, Error Handling
+- try is the first step in 
+
 
 # Franziska Hinkelmann: JavaScript engines - how do they even? | JSConf EU 2017
 
