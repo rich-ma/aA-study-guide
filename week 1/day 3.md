@@ -32,8 +32,13 @@
 
 ## DFS Search of graphs
 - DFS similar to DF traveersal of a tree, except graphs could have cycles
+- this means that we need to have a second object/array to indicate which nodes we have visted already.
+- 
 ![DFS](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/cycle.png)
 - in this example, can end up in a cycle between 2-0 and 2-0-1 and 3-3
+- we use a visited array so that we dont end up in a loop
+- a correct DFS would have us visit 2-0-1-3
+- 
 ```css
 // C++ program to print DFS traversal from 
 // a given vertex in a  given graph 
@@ -122,18 +127,36 @@ int main()
     return 0; 
 } 
 ```
-
-
-
+- this method utilizes a few helpers, first it adds the edges into the graph, then it visits the graph using DFS, and creates a boolean to check whether or not we've visited the nodes yet.
+- 
 
 # Web
 ---
 ## What happens when you type in www.google.com?
-1. Browser checks cache for a DNS record to find corresponding IP address of google.com
-2. If the request URL is not in the cache, ISP's DNS server initiates a DNS request to find the IP address of the server that hosts google.com
-3. browser initiates a TCP connection with the server
-4. the browser sends an http request to the web server
-5. server handles the request and sends back a response
-6. server sounds out an HTTP response
-7. browser displays the HTML content(for html responses which is the most common)
-8. 
+1. Type in Maps.google.com
+   
+2. Browser checks cache for a DNS record to find corresponding IP address of google.com
+- DNS(Domain Name System) is a database that maintains name of websites(URL) and the IP address linked to it
+- every URL has a unique IP address, which belongs to the computer that hosts the server of the website that we are visiting.
+- for example, google's IP is http://209.85.227.104, which you can visit
+   - DNS is like a phonebook for websites, listing URLs and their respective IP addresses
+- Browser will check four caches to find the DNS records
+  - First, checks browser cache to see if it is in our list of previously visited sites, which our browser stores for a fixed duration
+  - Second, browser checks the OS cache, a system call(i.e. gethostname on Windows) to your computer OS, since your computer also has a cache of DNS records
+  - third, it checks the router cache, which stores its own records as well
+  - Fourth, it checks the ISP(Internet service provider), last one
+- not the best in terms of security, but cache's are important to network traffic and improving data transfer time.
+
+3. If the request URL is not in the cache, ISP's DNS server initiates a DNS request to find the IP address of the server that hosts google.com
+- If the URL is not in any of the four caches, ISP's DNS will intiate a DNS query to find the IP address at the server that hosts the site you are trying to go to(maps.google.com)
+- 
+   
+4. browser initiates a TCP connection with the server
+   
+5. the browser sends an http request to the web server
+   
+6. server handles the request and sends back a response
+   
+7. server sounds out an HTTP response
+   
+8. browser displays the HTML content(for html responses which is the most common)
