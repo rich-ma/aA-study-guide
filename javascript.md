@@ -316,3 +316,16 @@ callback:
 - by using asynch we can give the browser a chance to repaint between event loop.
 
 - can also flood the callback queue, only do slow work every few seconds, or until user stops scrolling, not during all user inputs.
+
+
+# Regular Expression
+- RegEx is a pattern used to match character combinations in a string.
+- Are objects in Javascript
+- usually use the basic characters(a-z, etc) or some combination to indicate what patterns we are trying to match
+- Can declare like
+```javascript
+  const re = /ab+c/;
+  const re = new RegExp('ab+c');
+```
+- this regex is looking for the character a, followed by one or more character of b, followed by a c.
+- 
