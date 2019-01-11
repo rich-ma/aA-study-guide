@@ -160,3 +160,30 @@ int main()
 7. server sounds out an HTTP response
    
 8. browser displays the HTML content(for html responses which is the most common)
+
+
+# flashcards
+---
+
+ 1. What are the steps for DFS on a graph?
+   - using a stack to keep track of your current node, and some data structure(hash object) to keep track of visited nodes
+   - starting at the initial node, you check all adjacent nodes
+   - select the lowest/first/ however you define it and move to that node, and add it to the stack
+   - check all adjacent nodes on that new one
+     - if univisted nodes exist, add the lowest to the stack and move there
+     - otherwise, remove the current node from the stack and go back to the previous node
+   - continue this process until the stack is empty
+   - only visit unvisited nodes until the stack is empty
+ - BFS
+   - Uses a **queue** as the data structure instead of a stack, still have some data structure to keep track of visted nodes, hash object is probably best, O(1) lookup and 
+   - this allows us to visit all adjacent nodes before diving deep like in a stack with DFS.
+   - You start at the first node, and add all adjacent nodes in order to the queue.
+   - after you have visited them all, you dequeue the current node, and move to the next one(should be lowest of the adjacent nodes)
+   - continue this until the queue is empty
+ 2. What supporting data structure might you use for BFS and DFS, respectively?
+   - You use a stack for DFS, and queue for BFS.
+ 3. What happens when you type in www.google.com and hit enter?
+   - First your browser will check its cache to see if there is a DNS(Domain Name System) record for the IP Address of the site you went to.
+   - 
+ 4. What is the difference between the memory heap and call stack in javascript?
+ 5. What is one problem with programming languages that are fully single-threaded
