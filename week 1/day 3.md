@@ -161,11 +161,23 @@ int main()
       - the top-level name server(.com) will redirect it to the second-level name server (google.com)
       - second-level(google.com) will now find the matching IP for maps.google.com in its DNS records and return it to the DNS Recursor from your ISP, which will send it back to your browser
     - These requests are sent using small data packages 
-      - 
-
+      - The contain information such as the content of the request, and the IP Address it is destined to(DNS Recursor/ISP DNS Server address)
+      - The packets travel through multiple networking equipments before finding the correct DNS Server and going back to your DNS server and eventually your browser
+      - They use routing tables to figure out the fastest way for the packet to reach its destination
+      - If the packet gets lost, it will send a request failed error.
    
 4. browser initiates a TCP connection with the server
    
+
+   1. Client machine sends a SYN packet to the server over the internet asking if it is open for new connections.
+
+2. If the server has open ports that can accept and initiate new connections, it’ll respond with an ACKnowledgment of the SYN packet using a SYN/ACK packet.
+
+3. The client will receive the SYN/ACK packet from the server and will acknowledge it by sending an ACK packet.
+
+Then a TCP connection is established for data transmission!
+
+
 5. the browser sends an http request to the web server
    
 6. server handles the request and sends back a response
