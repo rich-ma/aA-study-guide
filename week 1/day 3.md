@@ -148,8 +148,21 @@ int main()
 - not the best in terms of security, but cache's are important to network traffic and improving data transfer time.
 
 3. If the request URL is not in the cache, ISP's DNS server initiates a DNS request to find the IP address of the server that hosts google.com
-- If the URL is not in any of the four caches, ISP's DNS will intiate a DNS query to find the IP address at the server that hosts the site you are trying to go to(maps.google.com)
-- 
+   - If the URL is not in any of the four caches, ISP's DNS will intiate a DNS query to find the IP address at the server that hosts the site you are trying to go to(maps.google.com)
+   - It will search multiple DNS servers on the internet until it finds the correct IP address for the URL(Website).
+   - this is a **recursive search** since the search will continue repeatedly from DNS server to DNS server until it either finds the IP Address or returns an error saying it was unable to find it.
+   - The ISPs DNS Server will now become the **DNS Recursor** whose job is to find the correct IP Address for the domain by asking other DNS Servers.
+   - The other DNS servers would be called **name servers** since they would doing a DNS search based on the website domain name.
+  ![DomainArchitecture](https://cdn-images-1.medium.com/max/1600/0*udK6jZ3PjlhjqW8U.png)
+    - most sites today have a third-level domain, second, and a top level domain.
+    - Each of these levels contain their own name servers which is queried during the DNS lookup
+    - Ex. maps.google.com
+      - First DNS Recursor(searching ISP DNS) will contact the root name server, which will redirect it to the top-level (.com) name server.
+      - the top-level name server(.com) will redirect it to the second-level name server (google.com)
+      - second-level(google.com) will now find the matching IP for maps.google.com in its DNS records and return it to the DNS Recursor from your ISP, which will send it back to your browser
+    - These requests are sent using small data packages 
+      - 
+
    
 4. browser initiates a TCP connection with the server
    
@@ -184,6 +197,11 @@ int main()
    - You use a stack for DFS, and queue for BFS.
  3. What happens when you type in www.google.com and hit enter?
    - First your browser will check its cache to see if there is a DNS(Domain Name System) record for the IP Address of the site you went to.
-   - 
+     - DNS allows for human friendly navigation, can go to a website through IP address or URL
+     - Browser checks 4 caches:
+        1. Browser cache
+        2. Operating system cache
+        3. router cache
+        4. ISP cache
  4. What is the difference between the memory heap and call stack in javascript?
  5. What is one problem with programming languages that are fully single-threaded
