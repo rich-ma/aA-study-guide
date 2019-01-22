@@ -455,3 +455,86 @@ can use span to determine how many spaces to take up as well
   - 
 ![grid-template](grid-template.jpg)
 ![grid-template](grid-template2.jpg)
+
+
+
+## What happens when you type in www.google.com?
+1. Type in Maps.google.com
+   
+2. Browser checks cache for a DNS record to find corresponding IP address of google.com
+- DNS(Domain Name System) is a database that maintains name of websites(URL) and the IP address linked to it
+- every URL has a unique IP address, which belongs to the computer that hosts the server of the website that we are visiting.
+- for example, google's IP is http://209.85.227.104, which you can visit
+   - DNS is like a phonebook for websites, listing URLs and their respective IP addresses
+- Browser will check four caches to find the DNS records
+  - First, checks browser cache to see if it is in our list of previously visited sites, which our browser stores for a fixed duration
+  - Second, browser checks the OS cache, a system call(i.e. gethostname on Windows) to your computer OS, since your computer also has a cache of DNS records
+  - third, it checks the router cache, which stores its own records as well
+  - Fourth, it checks the ISP(Internet service provider), last one
+- not the best in terms of security, but cache's are important to network traffic and improving data transfer time.
+
+3. If the request URL is not in the cache, ISP's DNS server initiates a DNS request to find the IP address of the server that hosts google.com
+   - If the URL is not in any of the four caches, ISP's DNS will intiate a DNS query to find the IP address at the server that hosts the site you are trying to go to(maps.google.com)
+   - It will search multiple DNS servers on the internet until it finds the correct IP address for the URL(Website).
+   - this is a **recursive search** since the search will continue repeatedly from DNS server to DNS server until it either finds the IP Address or returns an error saying it was unable to find it.
+   - The ISPs DNS Server will now become the **DNS Recursor** whose job is to find the correct IP Address for the domain by asking other DNS Servers.
+   - The other DNS servers would be called **name servers** since they would doing a DNS search based on the website domain name.
+  ![DomainArchitecture](https://cdn-images-1.medium.com/max/1600/0*udK6jZ3PjlhjqW8U.png)
+    - most sites today have a third-level domain, second, and a top level domain.
+    - Each of these levels contain their own name servers which is queried during the DNS lookup
+    - Ex. maps.google.com
+      - First DNS Recursor(searching ISP DNS) will contact the root name server, which will redirect it to the top-level (.com) name server.
+      - the top-level name server(.com) will redirect it to the second-level name server (google.com)
+      - second-level(google.com) will now find the matching IP for maps.google.com in its DNS records and return it to the DNS Recursor from your ISP, which will send it back to your browser
+    - These requests are sent using small data packages 
+      - The contain information such as the content of the request, and the IP Address it is destined to(DNS Recursor/ISP DNS Server address)
+      - The packets travel through multiple networking equipments before finding the correct DNS Server and going back to your DNS server and eventually your browser
+      - They use routing tables to figure out the fastest way for the packet to reach its destination
+      - If the packet gets lost, it will send a request failed error.
+   
+4. browser initiates a TCP connection with the server
+  - once the browser receives the correct IP address it will build a connection with the server that matches IP address to transfer information
+  - Browser uses internet protocol to build these connections, most common is TCP for HTTP requests.
+  - to transfer data between your computer(client) and the server it is important to have a TCP connection.
+    - uses the TCP/IP three-way handshake. Three set process where the client and server exchange SYN(sycnhronize) and ACK(Acknoledge) messages to establish a connection
+  - The three steps are:
+    1. Client machine sends a SYN packet to the server over the internet, asking the server if it is open to new connections
+    2. If the server has open ports that can accept and initiate new connections, it will respond with a SYN/ACK packet in acknowledgement of the SYN packet.
+    3. Client receives the SYN/ACK packet and will send an ACK packet to the server.
+    4. TCP connection is established and ready for data transmission.
+
+
+5. the browser sends an HTTP request to the web server
+   - Once a TCP connection is made, you can transfer data.
+   - Browser will send a GET HTTP request for maps.google.com web page
+   - Can also be a POST request if you are entering credentials or submitting a form.
+   - Request will contain other information such as browser identification(User-Agent Header), types of requests it will accept(Accept header), and connection headers asking it to keep the TCP connection alive for future requests.
+   - Will also send data from the cookies stored on the browser.
+ - Sample GET request header:
+![get_request](https://cdn-images-1.medium.com/max/2000/0*SyxEqHOBZElX5laf.png)
+- 
+   
+6. server handles the request and sends back a response
+    - Server contains a web server(Apache, IIS, Rails, etc), which will receive the request from the browser and passes it to the request handler(router/controller in rails)
+    - the hander that reads the request, its header, and cookies to see what is being requested and updates the information on the server if needed. 
+    - it then assembles a response in a particular format(JSON, XML, HTML)
+      - in Rails would send it out to the model and the model will hit the DB for the request and usually come back with some sort response
+
+
+7. server sounds out an HTTP response
+   - The server response contains the web page you requests and the status code, compression type(content encoding), how to cache the page(cache control), any cookies to set, privacy info, etc.
+![HTTP_server_response](https://cdn-images-1.medium.com/max/1600/0*ifRt45gihG_AwR3Z.png)
+- looking at the response, you can see the status code, indicating the status of the response
+  - 1xx indicates informational message only
+  - 2xx indicates success of some kind
+  - 3xx is a **redirect** code for the client to go to another URL
+  - 4xx indiciates an error on the clients end
+  - 5xx indicates an error on the server end.
+
+8. browser displays the HTML content(for html responses which is the most common)
+    - the controller will send back the HTTP response and the browser will take in the data and display the HTML content
+    - this happens in phases, first it will render the bare bone HTML skeleton
+    - then it wil check HTML tags and set out get requests for additional elements on the page such as images, CSS stylesheets, JS files, etc.
+    - The static files are cached by the browser so it doesn't have to fetch every time you visit the page.
+    - Then you will finally see maps.google.com.  this process goes very quickly for modern internet and caching systems.
+  
