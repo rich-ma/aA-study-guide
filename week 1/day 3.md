@@ -295,3 +295,5 @@ callback:
         4. ISP cache
  4. What is the difference between the memory heap and call stack in javascript?
  5. What is one problem with programming languages that are fully single-threaded
+   - they cannot run code asychronously and can end up with blocking that might stop code from running quickly.
+   - 

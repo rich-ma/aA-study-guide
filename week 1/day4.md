@@ -1,5 +1,44 @@
 # Notes
 
+# Algorithms
+## BFS Reading and code
+
+
+# DNS and how you can make it better
+- Domain Name System(DNS) is the backbone of the internet.
+- run by many engineers and their organizations, shapes future of the internet
+
+## how does the internet work?
+- If you go to freecodecamp.com what happens?
+  1. Your browser doesn't know the IP of freecodecamp was, so it couldnt connect to and retrieve those files.  
+  2. It looks at its browser cache for the IP, then the OS, then your router, then finally the ISP DNS cache
+  3. if its in none of those, it will start a DNS request where the Server DNS becomes a DNS Recursor(queries a DNS Resolver) going to the top level domain, secondary, etc until the IP is found.
+  4. then it will attempt to intiate a TCP/IP threeway handshake.
+     1. Client sends a Synchnronize(SYN) request to the server
+     2. server sends back a SYN/ACK response
+     3. client sends back a ACK response
+     4. handshake is now complete
+https://www.verisign.com/en_US/website-presence/online/how-dns-works/index.xhtml
+
+## Who makes it work?
+- IANA, ICANN
+- Internet works because of protocols and policies that have enough consensus to become universal norms.
+- Internet Assigned Numbers Authority(IANA) control how domain names and IP addresses are mapped
+- madate of making sure correct technical procedures are in place to have a safe and stable DNS.
+- Internet Corporation for Assigned Names and Numbers(ICANN) provides technical operations of vital DNS resources, it also defines policies for how the "name and numbers" of the internet should run.
+  - moves in a 'bottom up, consensus driven, multi stakeholder model'
+  - Moved from US Department of Commerce to the autonomous control of ICANN.
+  - has a board of directors and as a body, is divided up into seperate member groups
+  - inclusive approach treats public sector, private sector, and tehcnical experts as peers.
+  - in the ICANN community, you'll find registries, registrars, ISPs, Intellectual property advocates, commercial and business interests, non-commercial and non-profit interests, representation from over 100 govt's, and a global array of individual internet users.
+![ICANN_members](https://cdn-images-1.medium.com/max/1600/1*bmNP6V25oKJkvCuQwEsshw.png)
+- not all are represented equally
+- those with more financial stake will try to lobby their way
+
+## What can you do?
+- Be more involved as an end user, billions of users whos voices are not heard.
+- can join At-Large, a end user contingent of ICANN, 
+
 # Javascript callstack, concurrency, event loop
 - javascript is a single threaded non-blocking asynchronous, concurrent langauge
 - has calls tack, event loop, callback queue, and other apis
@@ -49,3 +88,23 @@ callback:
 - by using asynch we can give the browser a chance to repaint between event loop.
 
 - can also flood the callback queue, only do slow work every few seconds, or until user stops scrolling, not during all user inputs.
+
+
+
+# Flashcards
+
+1. What are the steps for BFS on a graph?
+  - Starting at the starting node, look and visit all adjacent nodes, then move to the lowest/first of those nodes and visit those in order as well,
+  -  add these visited nodes to the queue in order
+  - continue this until you get to a node that has no new nodes to visit
+  - then go through the queue in this same process, dequeue from the front and add any new nodes when one has them.
+  - once the queue is empty you are done.
+
+2. How does DNS work?
+   - 
+
+
+3. UPDATE EXISTING CARD What's the event loop? How does it work?
+
+
+4. What lifecycle methods get called in the mounting phase? What are the use cases for each of those methods?
