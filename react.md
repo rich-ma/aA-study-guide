@@ -133,3 +133,42 @@ const tasty = (
   </ul>
 );
 ```
+
+## .map in jsx
+- can use map, already did this for lists, 
+- can start with an array and map over it and creating li's, or any type of html tag you want
+ex:
+```javascript
+const strings = ['Home', 'Shop', 'About Me'];
+
+const listItems = strings.map(string => <li>{string}</li>);
+
+<ul>{listItems}</ul>
+```
+
+### Keys
+- key is a JSX attribute, need to to differentiate between different elements
+- React uses these to keep track of lists, if you dont use keys, React might scramble your list-items into the wrong order
+  - Usually use the item's ID, which is unique to the item, can also use the index
+- A list needs key if either of the following are true:
+  1. The list-items have memory from one rendering to the next, meaning they carry information from render to render, like a checklist
+  2. a List's order might be shuffled, a list of search results might shuffle from render to render.
+
+## React.createElement
+- JSX is shorthand for using React.createElement
+
+```javascript
+const h1 = React.createElement(
+  "h1",
+  null,
+  "Hello, world"
+);
+```
+is the same as 
+```javascript
+const h1 = <h1>Hello world</h1>;
+```
+- createElement takes 3 arguments
+  1. type
+  2. props
+  3. children
