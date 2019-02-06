@@ -1,0 +1,18 @@
+- apply 5 a day
+- find the apps
+- search node, express, react
+- avoid angular for now, until you get a job
+- indeed, angellist, job aggregration
+  - skip dice
+- apply on website, or apply on through the aggregation site
+- cover letter, find a template
+- after sending clearbit email
+  - want to talk about their tech stack, tehcnologies, concepts, etc
+  - doesn't have to be long, can be small paragraph(3-4 sentences)
+  - I'd love to get you on the phone to talk about my projects, what you're doing, get them on the phone.
+  - ask who the right recruiter for this job post is.
+- algoexpert
+
+- mock phone screen next monday
+- start apply afterward
+- 

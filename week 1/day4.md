@@ -39,6 +39,10 @@ https://www.verisign.com/en_US/website-presence/online/how-dns-works/index.xhtml
 - Be more involved as an end user, billions of users whos voices are not heard.
 - can join At-Large, a end user contingent of ICANN, 
 
+# React 16 lifecycle methods
+- 
+
+
 # Javascript callstack, concurrency, event loop
 - javascript is a single threaded non-blocking asynchronous, concurrent langauge
 - has calls tack, event loop, callback queue, and other apis
