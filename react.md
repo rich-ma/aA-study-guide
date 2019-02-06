@@ -55,3 +55,11 @@ const title = <h1 id="title">Introduction to React.js: Part I</h1>;
 - When you render a JSX element, every virtual DOM is updated, which sounds inefficient, but it is so fast and the cost in insignificant.
 - Once the virtual DOM updates, React compares it to the previous snapshot and sees which objects have updated, this is called **diffing**.
 - react will only update those components that have updated on the real DOM.  
+
+When you update the DOM in React:
+1. The entire virtual DOM gets updated.
+2. The virtual DOM gets compared to what it looked like before you updated it. React figures out which objects have changed.
+3. The changed objects, and the changed objects only, get updated on the real DOM.
+4. Changes on the real DOM cause the screen to change.
+
+# Advanced JSX
