@@ -63,3 +63,73 @@ When you update the DOM in React:
 4. Changes on the real DOM cause the screen to change.
 
 # Advanced JSX
+
+## self closing tags
+  - in HTML its ok to put the forward slash before the closing angle bracket <br />, but <br> is also ok
+- In JSX you **must** have the slash or you will have an error, <br />
+
+## JS in your JSX
+- use {} to wrap your JS code in JSX.
+- {} are markers to signal the beginning and end of a **JS injection**
+
+## variables in JSX
+- When you inject JS into JSX, you have access to the environment in the rest of your file, meaning you can use variables available in that scope
+- It is common to use an objects properties as attributes for JSX elements
+```javascript
+const pics = {
+  panda: "http://bit.ly/1Tqltv5",
+  owl: "http://bit.ly/1XGtkM3",
+  owlCat: "http://bit.ly/1Upbczi"
+}; 
+
+const panda = (
+  <img 
+    src={pics.panda} 
+    alt="Lazy Panda" />
+);
+
+const owl = (
+  <img 
+    src={pics.owl} 
+    alt="Unimpressed Owl" />
+);
+
+const owlCat = (
+  <img 
+    src={pics.owlCat} 
+    alt="Ghastly Abomination" />
+);
+```
+### event listeners
+- just like html, JSX can have event listeners
+- <img onClick={myFunc} />
+- the event listeners attribute value must be a function to work correctly
+
+### conditionals
+- cannot inject if statements into JSX
+- has to do with how JSX is compiled
+- you can write an if statement, and not inject it into JSX
+- write the if statement outside, and create the conditional objects or changes within JS, and render that in JSX.
+- Can use ternary operator in JSX.
+- works the same way as JS.
+- ex
+```javascript
+const headline = (
+  <h1>
+    { age >= drinkingAge ? 'Buy Drink' : 'Do Teen Stuff' }
+  </h1>
+);
+```
+- Can also use **&&** to conditionally render
+- ex:
+```javascript
+const tasty = (
+  <ul>
+    <li>Applesauce</li>
+    { !baby && <li>Pizza</li> }
+    { age > 15 && <li>Brussels Sprouts</li> }
+    { age > 20 && <li>Oysters</li> }
+    { age > 25 && <li>Grappa</li> }
+  </ul>
+);
+```
