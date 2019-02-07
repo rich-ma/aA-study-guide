@@ -205,3 +205,67 @@ class YourComponentNameGoesHere extends React.Component {}
 ```
 - You write a JSX element, and instead of giving it a standard HTML tag, you call it the classname
 - When you make a component <MyComponentClass />, that component inherits all the methods of its component class
+
+
+# ReactJS part 1
+
+## Use variable attributes in a component
+- can use interpolated data using {} in JSX
+
+using conditionals
+```javascript 
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class TodaysPlan extends React.Component {
+  render() {
+    let task;
+    if (!apocalypse) {
+      task = 'learn React.js'
+    } else {
+      task = 'run around'
+    }
+
+    return <h1>Today I am going to {task}!</h1>;
+  }
+}
+
+ReactDOM.render(
+	<TodaysPlan />,
+	document.getElementById('app')
+);
+```
+- change what **task** represents conditionally
+
+## using This in a component
+- this represents the instance of the component that you are in
+```javascript
+class IceCreamGuy extends React.Component {
+  get food() {
+    return 'ice cream';
+  }
+
+  render() {
+    return <h1>I like {this.food}.</h1>;
+  }
+}
+```
+- this would be an instance of IceCreamGuy, could be something else, but usually the object
+
+## Using event listeners in components
+- event handlers are functions that get called in response to an event
+- ex:
+```javascript
+class MyClass extends React.Component {
+  myFunc() {
+    alert('Stop it.  Stop hovering.');
+  }
+
+  render() {
+    return (
+      <div onHover={this.myFunc}>
+      </div>
+    );
+  }
+}
+```
