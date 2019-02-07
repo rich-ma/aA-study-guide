@@ -269,3 +269,70 @@ class MyClass extends React.Component {
   }
 }
 ```
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Contact extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      password: 'swordfish',
+      authorized: false
+    };
+    this.authorize = this.authorize.bind(this);
+  }
+
+  authorize(e) {
+    const password = e.target.querySelector(
+      'input[type="password"]').value;
+    const auth = password == this.state.password;
+    this.setState({
+      authorized: auth
+    });
+  }
+
+  render() {
+    const login = (
+    	<form action="#" onSubmit=>
+      	<input type="password" placeholder="Password" />
+      
+      	<input type='submit' />
+      </form>
+    );
+    
+    const unauthorized = (
+        <div>
+        <h1>Enter the Password</h1>
+      	{login}
+        </div>
+      );
+    
+    const contactInfo = (
+        <div>
+          <h1>Contact</h1>
+          <ul>
+            <li>
+              client@example.com
+            </li>
+            <li>
+              555.555.5555
+            </li>
+          </ul>
+        </div>
+      );
+    
+    return (
+      <div id="authorization">
+       { this.state.authorized ? contactInfo : unauthorized }
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Contact />, 
+  document.getElementById('app')
+);
+```
