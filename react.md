@@ -172,3 +172,36 @@ const h1 = <h1>Hello world</h1>;
   1. type
   2. props
   3. children
+
+# React Components
+- react components are small reusable chunks of code that is responsible for doing one job(rendering part of screen)
+- always hve to import React from 'react';
+  - creates a new variable called React
+  - gives us methods from the **React Library**
+
+## ReactDOM
+- importing ReactDOM allows us to use ReactDOM methods, which interact with the virtual and real DOM
+
+## Component Classes
+- Every component must come from a component class
+- these are like factory methods that create components
+  - can use these classes to produce as many components as you want
+- to make a component class, you use a base class from the React Library
+  - **React.Component**
+- React.Component is a JS class, need to subclass it by **extending** it
+```javascript
+class YourComponentNameGoesHere extends React.Component {}
+```
+- Component classnames **MUST START WITH A CAPITAL**, in UpperCamelCase
+
+### render()
+- component classes are like factory functions that build components  
+- the render method is a function that must contain a return statement
+
+## Creating Component Instances
+- after your class has a render, you can use it as a working component class
+```javascript
+<MyComponentClass />
+```
+- You write a JSX element, and instead of giving it a standard HTML tag, you call it the classname
+- When you make a component <MyComponentClass />, that component inherits all the methods of its component class
