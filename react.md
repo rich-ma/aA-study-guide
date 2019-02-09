@@ -378,3 +378,105 @@ ReactDOM.render(
   document.getElementById('app')
 );
 ```
+
+## render different UI based on props
+- can use conditionals to render differently
+
+
+```javascript
+import React from 'react';
+
+export class Welcome extends React.Component {
+  render() {
+    if (this.props.name == 'Wolfgang Amadeus Mozart') {
+      return (
+      	<h2>
+      	  hello sir it is truly great to meet you here on the web
+      	</h2>
+      );
+    } else {
+      return (
+      	<h2>
+      	  WELCOME "2" MY WEB SITE BABYYY!!!!!
+      	</h2>
+      );
+    }
+  }
+}
+```
+
+### Event handler on component class
+- Can pass an event handler function as a prob as well, need to define the event handler beforehand
+
+```javascript
+import React from 'react';
+
+class Example extends React.Component {
+  handleEvent() {
+    alert(`I am an event handler.
+      If you see this message,
+      then I have been called.`);
+  }
+
+  render() {
+    return (
+      <h1 onClick={this.handleEvent}>
+        Hello world
+      </h1>
+    );
+  }
+}
+```
+- handlEvent() is our event that gets called on like 423
+- can pass event handlers as props as well
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Button } from './Button';
+
+class Talker extends React.Component {
+  talk() {
+    let speech = '';
+    for (let i = 0; i < 10000; i++) {
+      speech += 'blah ';
+    }
+    alert(speech);
+  }
+  
+  render() {
+    return <Button talk={this.talk}/>;
+  }
+}
+
+ReactDOM.render(
+  <Talker />,
+  document.getElementById('app')
+);
+```
+- by convention, we call event handler functions handle_____ such as handleHover, handleKeyPress, handleSubmit, etc
+- the prop should use the word on___, onSubmit, onClick, etc.
+- Normally, when you use names like onClick, for HTML elements, it creates an **event listener**
+- but this doesn't happen when we pass the event to button since <Button /> is not an HTML element
+  - it is a **Component Instance**
+
+## This.props.children
+- every component's props has children
+- this.props.children will return everything between a components opening and lcosing JSX tags.
+- Components can be self closing, or not.
+- if a component has multiple elements between the tags, they will be in an array.
+
+## defaultProps
+- can give defaultProps if none exist at the moment.
+
+Here are some of the skills that you have learned:
+
+Passing a prop by giving an attribute to a component instance
+Accessing a passed-in prop via this.props.prop-name
+Displaying a prop
+Using a prop to make decisions about what to display
+Defining an event handler in a component class
+Passing an event handler as a prop
+Receiving a prop event handler and attaching it to an event listener
+Naming event handlers and event handler attributes according to convention
+this.props.children
+getDefaultProps
