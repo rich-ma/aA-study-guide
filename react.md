@@ -295,7 +295,7 @@ class Contact extends React.Component {
 
   render() {
     const login = (
-    	<form action="#" onSubmit=>
+    	<form action="#" onSubmit={this.authorize} >
       	<input type="password" placeholder="Password" />
       
       	<input type='submit' />
@@ -333,6 +333,48 @@ class Contact extends React.Component {
 
 ReactDOM.render(
   <Contact />, 
+  document.getElementById('app')
+);
+```
+
+## Props
+- props objects that components have, hold information about that component
+- You can pass props to a component by giving it attributes
+  - in rails, we map state to props
+- Common use of props is to pass information to one component to another, usually a class component to a functional one
+
+```javascript
+import React from 'react';
+
+export class Greeting extends React.Component {
+  render() {
+    return <h1>Hi there, {this.props.name}!</h1>;
+  }
+}
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Greeting} from './Greeting';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>
+          Hullo and, "Welcome to The Newzz," "On Line!"
+        </h1>
+      	<Greeting name="Esmerelda"/>
+        
+        <article>
+          Latest newzz:  where is my phone?
+        </article>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App />, 
   document.getElementById('app')
 );
 ```
