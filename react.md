@@ -628,3 +628,8 @@ class Toggle extends React.Component {
   }
 }
 ```
+
+### this.setState() automatically calls render
+- this is why you can't call this.setState() from inside render
+- this.setState() calls render(), and render calls this.setState, leading to an infinite cycle.
+
