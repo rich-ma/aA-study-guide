@@ -511,3 +511,120 @@ class Example extends React.Component {
 - state here has { mood: 'decent' }
 - constructor and supe are ES6 code, not React.
 - React components always have to call super to be setup correctly.
+
+## Accessing State
+- we use this.state.{name-of-property} like this.state.name to access the state
+- like props, can be accessed in any React component class body
+
+## this.setState
+- use this.setState() to change the state
+- take two arguments, object that will update update the component's state, and a callback(which is rarely used)
+- ex
+- this.state
+```javascript
+this.state = {
+  mood:   'great',
+  hungry: false
+}
+this.setState({ hungry: true });
+{
+  mood:   'great',
+  hungry: true
+}
+```
+- this.setState takes an object, and merges that object with the component's current state., if there are properties in that currents tate that aren't part of that object, they remain the same
+- You can also call this.setState from another function
+```javascript
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { weather: 'sunny' };
+    this.makeSomeFog = this.makeSomeFog.bind(this);
+  }
+
+  makeSomeFog() {
+    this.setState({
+      weather: 'foggy'
+    });
+  }
+}
+```
+- this.makeSomeFog = this.makeSomeFog.bind(this);
+- this is usd because makeSomeFog()'s body contains the word this
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Mood extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { mood: 'good' };
+    this.toggleMood = this.toggleMood.bind(this);
+  }
+
+  toggleMood() {
+    const newMood = this.state.mood == 'good' ? 'bad' : 'good';
+    this.setState({ mood: newMood });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>I'm feeling {this.state.mood}!</h1>
+        <button onClick={this.toggleMood}>
+          Click Me
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Mood />, document.getElementById('app'));
+```
+- Here is how a <Mood />'s state would be set:
+1. A user triggers an event (in this case a click event, triggered by clicking on a <button></button>).
+2. The event from Step 1 is being listened for (in this case by the onClick attribute on line 20).
+3. When this listened-for event occurs, it calls an event handler function (in this case, this.toggleMood(), called on line 20 and defined on lines 11-14).
+4. Inside of the body of the event handler, this.setState() is called (in this case on line 13).
+5. The component's state is changed!
+
+
+- when the onClick is activated, the function loses its **this** and  **this.state.mood** and **this.setState** no longer mean anything to it.
+  - this is why we need to bind this.toggleMood to this.toggleMood.bind(this) so when it is called it is referencing the correct this.
+- Whenever you define an event handler that uses this, you need to add this.methodName = this.methodName.bind(this).
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const green = '#39D1B4';
+const yellow = '#FFD712';
+
+class Toggle extends React.Component {
+  constructor(props){
+    super(props);
+  	this.state = {
+      color: green
+    };  
+    this.changeColor = this.changeColor.bind(this);
+  }
+  
+  changeColor(){
+    const newColor = this.state.color == green ? yellow : green;
+    this.setState({ color: newColor });
+  }
+  
+  render() {
+    return (
+      <div style={{background: this.state.color}}>
+        <h1>
+          Change my color
+        </h1>
+        <button onClick={this.changeColor}>
+          Change color
+        </button>
+      </div>
+    );
+  }
+}
+```
