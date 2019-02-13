@@ -483,3 +483,31 @@ getDefaultProps
 
 
 # this.state
+- React components need dynamic information to render
+- i.e. basketball game score updates quickly, components will need to kow socre and render it in a useful way
+- two ways for components to get dynamic info:
+  - **props**
+  - **state**
+
+## Setting initial state
+- State is not passed from outside, unlike **props**
+- a component decides its own state.
+- to make component have state, it needs a state property.
+i.e.
+```javascript
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { mood: 'decent' };
+  }
+
+  render() {
+    return <div></div>;
+  }
+}
+
+<Example />
+```
+- state here has { mood: 'decent' }
+- constructor and supe are ES6 code, not React.
+- React components always have to call super to be setup correctly.
