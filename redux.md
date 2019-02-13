@@ -98,4 +98,53 @@ const counter = (state = 0, action) => {
 }
 ```
 - uses a switch statement, with a default that will return the original state, and corresponding reducer actions for actions that it has the **type** for.
+
+
+## 6. Store Methods: getState(), dispatch(), and subscribe()
+- bringing 
+```javascript
+// import { createStore } from 'redux' // npm module syntax
+
+const { createStore } = Redux; // Redux CDN import syntax
+const store = createStore(counter);
+```
+- store binds together three principles of Redux
+  1. Holds the current application state object
+  2. Allows you to dispatch actions
+  3. when you create it, you need to specify the reducer that tells how sate is updated with actions
+- in this example we call createSTore with counter as the reducer that manages the state updates.
+
+1. getState();
+   - retrieves current state of redux store. 
+2. dispatch();
+   - lets you dispatch actions to update the state of your app.
+   - is the most commonly used.
+3. subscribe();
+   - registers a callback that the redux store will callany time an action has been dispatched, so you can update the UI of your app to reflect the current application state.e
+
+ex.
+```javascript
+const counter = (state = 0, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    default:
+      return state;
+  }
+}
+
+import { createStore } from 'redux';
+
+const store = createStore(counter);
+//takes counter as an argument for 
+
+```
+- createStore takes 3 arguments, createStore(reducer, preloadedState, enhancer)
+  - **reducer(function)**: a reducing function that returns the next state tree, given the current state tree and an action to handle
+  - **preloaded state**: the initial state, can hydrate the state from the server in a universal app, or restore prev. serialzed user session/
+    - if you use combineReducers, you need to give a preloaded state with the same shape as the keys passed to it.
+  - **enhancer(function)**: the store enhancer, third party capabilities such as middleware, time travel, persistence, etc. Only applyMiddleware(), ships with Redux
+- Do not create more than one store in an application, instead use **combineReducer** to create a root reducer and multiple reducers within that(UI, Entities, Errors, Session)
 - 
