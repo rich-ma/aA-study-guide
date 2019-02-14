@@ -138,8 +138,27 @@ const counter = (state = 0, action) => {
 import { createStore } from 'redux';
 
 const store = createStore(counter);
-//takes counter as an argument for 
+// takes 3 arguments, but two optional, requires a reducer
+store.subscribe(() => {
+  document.body.innerText = store.getState();
+})
 
+document.addEventListener('click', () => {
+  store.dispatch({ type: 'INCREMENT' })
+})
+// this version has an issue because it never displays the initial state of the store(0);
+//to fix this, we create a new function called render put the subscribe logic into it, and call it whenever the state changes, triggering the subscribe function
+
+const render = () => {
+  document.body.innerHTML = store.getState();
+}
+
+store.subscribe(render);
+render(); //initial call to display initial state;
+
+document.addEventListener('click', () => {
+  store.dispatch({ type: 'INCREMENT' })
+})
 ```
 - createStore takes 3 arguments, createStore(reducer, preloadedState, enhancer)
   - **reducer(function)**: a reducing function that returns the next state tree, given the current state tree and an action to handle
@@ -147,4 +166,28 @@ const store = createStore(counter);
     - if you use combineReducers, you need to give a preloaded state with the same shape as the keys passed to it.
   - **enhancer(function)**: the store enhancer, third party capabilities such as middleware, time travel, persistence, etc. Only applyMiddleware(), ships with Redux
 - Do not create more than one store in an application, instead use **combineReducer** to create a root reducer and multiple reducers within that(UI, Entities, Errors, Session)
-- 
+
+## 7. Implementing Store from Scratch
+- need to keep track of our subscriptions, so we create an array of listeners, everytime subscribe is called we push a new listener into the array.
+- we need to dispatch actions as well, the state update with the reducer and the new action, then each listener is updated 
+- to unsubscribe we filter out the current listener using a function that filters it from the filter array.
+- when the store is returned, we want the initial state to be populated.
+
+## 8. React Counter Example
+
+
+## 9. Avoiding array mutation with concat(), slice(), and ...spread
+- to ensure that we are not modifying the original state, we use these methods to protect it.
+- also use deepFreeze() to lock the state from being mutated.
+- this allows us to test our code fluidly.
+- For example. say we have an array of numbers representing counters
+- if we wanted to add a counter, we can't just push a new counter onto the list, as that would mutate the existing array
+  - instead we can return a spread of the original list and the new counter "return [...list, 0]
+- If we wanted to remove a counter from the list, we can't use splice() because that mutates as well
+  - instead, we slice from 0 to the index, and from the index+1 to the end.
+  - "return list.slice(0, index).concat(list.slice(index+1))"
+  - cleaner way "return [...list.slice(0, index), ...list.slice(index+1)]
+- if we wanted to increment an index we cant just index into the list "list[index]++" becuase that mutates as well.
+  - instead, we return a new object using slice
+  - return [...list.slice(0, index), list[index] + 1, ...list.slice(index+1)];
+  - 
