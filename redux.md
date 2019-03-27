@@ -191,3 +191,59 @@ document.addEventListener('click', () => {
   - instead, we return a new object using slice
   - return [...list.slice(0, index), list[index] + 1, ...list.slice(index+1)];
   - 
+
+## Creating a reducer
+- we use deepfreeze to prevent accidental writing on state
+- reducer: pure function to implement update logic of application, how next state is calculated given current state and action.
+- write a test with first state, action, and expected state.
+- reducer takes two arguments, state, and action.
+- reducer uses a switch statement to look at the action type to see if it matches any of the cases the reducer is in charge of
+- will create a new object and add it to the state with an object using all the info from the action (id, text, and completion)
+
+ex. 
+```javascript
+const todos = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [
+        ...state,
+        {
+          id: action.id,
+          text: action.text,
+          completed: false
+        }
+      ];
+    default:
+      return state;
+  }
+};
+
+const testAddTodo = () => {
+  const stateBefore = [];
+  const action = {
+      type: 'ADD_TODO',
+      id: 0,
+      text: 'Learn Redux'
+  };
+  const stateAfter = [{
+      id: 0,
+      text: 'Learn Redux',
+      completed: false
+  }];
+
+  deepFreeze(stateBefore);
+  deepFreeze(action);
+
+  expect(
+    todos(stateBefore, action)
+  ).toEqual(stateAfter);
+};
+
+testAddTodo();
+console.log('All tests passed')
+```
+- we create a todoReducer here that is able to add todo, and toggle todo.
+- toggle looks for a todo with matching id, and flips its 'completed' state.
+
+## reducer composition with Arrays
+- 

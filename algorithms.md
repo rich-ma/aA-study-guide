@@ -201,3 +201,39 @@ can create an array of pointers
       -  space would still be O(E + V)
       -  Adding a new connection, or delete a new connection, would be O(V) at worse
       -  binary serach tree much better
+
+
+# Big O motivation
+- what algorithm is better?
+- What factors affect speed of an algorithm?
+  - hardware, language, input size, etc.
+- What is determined by the algorithm itself?
+  - Not hardware, not language
+  - # of steps for sure, input is determined by algorithm as well
+
+## RAM model of computation
+- cost of each step:
+  - + 1 step
+  - - 1.2 steps
+  - * 1.3 steps
+  - / 1.8 steps
+  - <,> 1 step
+  - <=,>= 2 steps
+  - === 1 step
+
+- in reality we don't do this when we calculate the steps in an algorithm
+- the complexity does not benefit our accuracy
+
+## Random Access Machine model
+- all mathematical operators are 1 step
+- loops n*# of steps in each oteration
+
+## Asymptotic Analysis
+- can graph out the algorithm to find out which one is best, ones that scale with input size will be worse after a certain n, while ones with fixed sized are more consistent, but slower with smaller n.
+- helps us come up with runtime of an alg.
+- behavior of a line as it approaches some limit(usually infinity)
+- constant, exp, linear, logarithmic, etc.
+- We ignore constants in asymptotic analysis
+  - it may shift the line, but doesn't change its overall shape
+- we take the most dominant term as we approach infinity.
+- 
